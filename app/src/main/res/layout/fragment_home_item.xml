@@ -93,6 +93,7 @@
                         app:srcCompat="@drawable/ic_favorites" />
 
                     <ImageButton
+                        android:id="@+id/shareBtn"
                         android:layout_width="?attr/actionBarSize"
                         android:layout_height="?attr/actionBarSize"
                         android:background="?attr/selectableItemBackgroundBorderless"

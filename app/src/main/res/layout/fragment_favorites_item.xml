@@ -16,6 +16,7 @@
         app:cardElevation="2dp">
 
         <com.balysv.materialripple.MaterialRippleLayout
+            android:id="@+id/rippleLayout"
             style="@style/RippleStyleBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

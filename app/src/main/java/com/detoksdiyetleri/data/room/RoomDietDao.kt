@@ -1,9 +1,6 @@
 package com.detoksdiyetleri.data.room
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
+import android.arch.persistence.room.*
 import com.detoksdiyetleri.model.Diet
 import io.reactivex.Flowable
 import io.reactivex.Maybe
@@ -25,6 +22,10 @@ interface RoomDietDao {
 
     @Delete
     fun delete(dietEntity: DietEntity)
+
+
+    @Query(RoomDietConstants.DELETE_BY_DIET+"= :remoteId ")
+    fun delete(remoteId: String)
 
     @Query(RoomDietConstants.SELECT_FAVORITES_DIET)
     fun getFavoriteDiets(): Flowable<List<DietEntity>>

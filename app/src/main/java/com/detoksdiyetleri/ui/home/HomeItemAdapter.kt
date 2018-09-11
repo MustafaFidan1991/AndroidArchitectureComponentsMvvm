@@ -9,6 +9,7 @@ import com.detoksdiyetleri.databinding.FragmentHomeItemBinding
 import com.detoksdiyetleri.model.Diet
 import com.detoksdiyetleri.ui.detail.DetailActivity
 import com.detoksdiyetleri.utils.startNewActivity
+import com.detoksdiyetleri.utils.startShareActivity
 import java.io.Serializable
 
 class HomeItemAdapter(activity:AppCompatActivity) : BaseRecyclerAdapter<Diet, HomeItemViewModel, FragmentHomeItemBinding>(activity) {
@@ -22,6 +23,12 @@ class HomeItemAdapter(activity:AppCompatActivity) : BaseRecyclerAdapter<Diet, Ho
             bundle.put("diet",viewModel.model)
             activity.startNewActivity(DetailActivity::class.java,bundle)
         }
+
+
+        binding.shareBtn.setOnClickListener{
+            activity.startShareActivity(viewModel.getShareContent())
+        }
+
 
         viewModel.favoriteStatus?.observe(activity, Observer {
             isSuccess->

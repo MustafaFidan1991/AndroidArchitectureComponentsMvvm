@@ -30,7 +30,6 @@ class FavoritesFragment : BaseFragment<FavoritesViewModel, FragmentFavoritesBind
         super.onCreateView(inflater, container, savedInstanceState)
         binding.viewModel = viewModel
 
-
         binding.adapter = FavoritesItemAdapter(this.activity!! as AppCompatActivity)
 
         binding.recyclerView.addItemDecoration(SpacingItemDecoration(2, 8.convertDpToPixel(activity as Context), true))
@@ -39,13 +38,32 @@ class FavoritesFragment : BaseFragment<FavoritesViewModel, FragmentFavoritesBind
 
         viewModel.loadFavoritesDiets()?.observe(this, Observer {
             list->
-            binding.adapter!!.update(list!!)
+            if(list!!.size>0){
+                binding.adapter!!.update(list)
+                showNoItemView(false)
+            }
+            else{
+                showNoItemView(true)
+            }
         })
-
-
-
         return binding.root
     }
+
+
+    override fun showNoItemView(status:Boolean) {
+
+        if(status){
+            binding.recyclerView.visibility = View.GONE
+            binding.noItemView?.root?.visibility = View.VISIBLE
+        }
+        else{
+            binding.recyclerView.visibility = View.VISIBLE
+            binding.noItemView?.root?.visibility = View.GONE
+        }
+
+
+    }
+
 
 
 }

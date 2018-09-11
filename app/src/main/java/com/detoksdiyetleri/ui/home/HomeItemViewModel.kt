@@ -1,20 +1,14 @@
 package com.detoksdiyetleri.ui.home
 
 import android.arch.lifecycle.MutableLiveData
-import android.os.Environment
-import com.detoksdiyetleri.R
 import com.detoksdiyetleri.base.BaseRecyclerItemViewModel
 import com.detoksdiyetleri.data.repository.DietRepository
 import com.detoksdiyetleri.data.room.DietEntity
 import com.detoksdiyetleri.model.Diet
-import com.detoksdiyetleri.utils.DATE_FORMAT
-import com.detoksdiyetleri.utils.DateCalculator
-import com.detoksdiyetleri.utils.ResourceProvider
-import com.detoksdiyetleri.utils.toOutputDateFormat
+import com.detoksdiyetleri.utils.*
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.io.File
 import java.util.*
 import javax.inject.Inject
 
@@ -81,8 +75,6 @@ class HomeItemViewModel : BaseRecyclerItemViewModel<Diet>(){
                         de.createdDate = createdDate!!
                         insert(de)
                     }
-
-
                 }, {
                     t: Throwable? ->
                     t?.printStackTrace()
@@ -92,7 +84,7 @@ class HomeItemViewModel : BaseRecyclerItemViewModel<Diet>(){
 
     fun insert(dietEntity: DietEntity){
         val observable = Observable.create<Boolean> { emitter ->
-            dietRepository.insert(dietEntity)
+            dietRepository.insertToRoom(dietEntity)
             emitter.onNext(true)
             emitter.onComplete()
         }
@@ -103,7 +95,7 @@ class HomeItemViewModel : BaseRecyclerItemViewModel<Diet>(){
 
     fun delete(dietEntity: DietEntity){
         val observable = Observable.create<Boolean> { emitter ->
-            dietRepository.delete(dietEntity)
+            dietRepository.deleteFromRoom(dietEntity)
             emitter.onNext(false)
             emitter.onComplete()
         }
@@ -113,5 +105,7 @@ class HomeItemViewModel : BaseRecyclerItemViewModel<Diet>(){
             favoriteStatus?.value = result
         })
     }
+
+    fun getShareContent() = model.title+"\n\n"+model.content+"\n\n"+ STORE_LINK
 
 }

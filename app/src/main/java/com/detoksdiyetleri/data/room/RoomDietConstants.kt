@@ -9,9 +9,14 @@ class RoomDietConstants {
 
         private const val SELECT_FROM = "SELECT * FROM "
 
+        private const val DELETE_FROM ="DELETE FROM "
+
         const val SELECT_FROM_DIET_EQUAL = SELECT_FROM+ TABLE_DIETS+" WHERE remote_id="
 
         const val SELECT_FAVORITES_DIET = SELECT_FROM + TABLE_DIETS
+
+
+        const val DELETE_BY_DIET = DELETE_FROM+TABLE_DIETS+" WHERE remote_id="
 
     }
 }

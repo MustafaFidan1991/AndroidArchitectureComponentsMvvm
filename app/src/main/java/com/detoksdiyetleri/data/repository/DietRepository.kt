@@ -18,12 +18,17 @@ class DietRepository@Inject constructor(
         private val remoteDietDataSource: RemoteDietDataSource
 ) : IDietRepository {
 
-    override fun insert(dietEntity: DietEntity) {
+    override fun insertToRoom(dietEntity: DietEntity) {
         roomDietDataSource.dietDao().insert(dietEntity)
     }
 
-    override fun delete(dietEntity: DietEntity) {
+    override fun deleteFromRoom(dietEntity: DietEntity) {
         roomDietDataSource.dietDao().delete(dietEntity)
+    }
+
+
+    override fun deleteByRemoteId(remoteId: String) {
+        roomDietDataSource.dietDao().delete(remoteId)
     }
 
     override fun setDietToFavorites() {

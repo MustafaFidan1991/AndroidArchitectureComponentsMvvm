@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.detoksdiyetleri.ui.detail.DetailActivity">
     <item
-        android:id="@+id/menu_share"
+        android:id="@+id/menu_remove_favorite"
         android:orderInCategory="100"
-        android:title="@string/share"
+        android:title="@string/remove_favorites"
         app:showAsAction="never" />
 </menu>

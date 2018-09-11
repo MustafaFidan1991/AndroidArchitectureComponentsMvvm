@@ -21,9 +21,11 @@ interface IDietRepository {
 
     fun getDietByRemoteId(remoteId:String):Single<List<DietEntity>>
 
-    fun insert(dietEntity: DietEntity)
+    fun insertToRoom(dietEntity: DietEntity)
 
-    fun delete(dietEntity: DietEntity)
+    fun deleteFromRoom(dietEntity: DietEntity)
+
+    fun deleteByRemoteId(remoteId: String)
 
 
 }

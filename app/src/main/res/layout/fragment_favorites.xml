@@ -26,5 +26,15 @@
             app:adapter="@{adapter}"
             app:layoutManager="@{layoutManager}" />
 
+        <include
+            android:visibility="gone"
+            android:id="@+id/noItemView"
+            app:content="@{@string/no_item_favorite}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            layout="@layout/no_item_view"
+            />
+
     </RelativeLayout>
 </layout>

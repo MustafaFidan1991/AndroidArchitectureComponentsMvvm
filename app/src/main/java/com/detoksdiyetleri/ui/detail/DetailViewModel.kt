@@ -7,6 +7,7 @@ import com.detoksdiyetleri.base.BaseViewModel
 import com.detoksdiyetleri.data.repository.DietRepository
 import com.detoksdiyetleri.data.room.DietEntity
 import com.detoksdiyetleri.model.Diet
+import com.detoksdiyetleri.utils.STORE_LINK
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -28,7 +29,7 @@ class DetailViewModel : BaseViewModel() {
     @Bindable
     var imgUrl : String?=null
 
-    var favoriteStatus : MutableLiveData<Boolean>?= null
+    var favoriteStatus = MutableLiveData<Boolean>()
 
     fun setValues(){
         title = diet.title
@@ -50,7 +51,7 @@ class DetailViewModel : BaseViewModel() {
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({
                             dietEntity ->
-                            favoriteStatus?.value = dietEntity!!.size > 0
+                            favoriteStatus.value = dietEntity!!.size > 0
                         }, {
                             t: Throwable? ->
                             t?.printStackTrace()
@@ -90,25 +91,27 @@ class DetailViewModel : BaseViewModel() {
 
     fun insert(dietEntity: DietEntity){
         val observable = Observable.create<Boolean> { emitter ->
-            dietRepository.insert(dietEntity)
+            dietRepository.insertToRoom(dietEntity)
             emitter.onNext(true)
             emitter.onComplete()
         }
         compositeDisposable.add(observable.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io()).subscribe { result ->
-            favoriteStatus?.value = result
+            favoriteStatus.value = result
         })
     }
 
     fun delete(dietEntity: DietEntity){
         val observable = Observable.create<Boolean> { emitter ->
-            dietRepository.delete(dietEntity)
+            dietRepository.deleteFromRoom(dietEntity)
             emitter.onNext(false)
             emitter.onComplete()
         }
         compositeDisposable.add(observable.observeOn(
                 AndroidSchedulers.mainThread()
         ).subscribeOn(Schedulers.io()).subscribe { result ->
-            favoriteStatus?.value = result
+            favoriteStatus.value = result
         })
     }
+
+    fun getShareContent() = diet.title+"\n\n"+diet.content+"\n\n"+ STORE_LINK
 }
