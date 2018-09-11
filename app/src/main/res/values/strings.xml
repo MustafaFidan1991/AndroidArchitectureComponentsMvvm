@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Detoks Diyetleri</string>
+
+    <string name="seconds_ago">%1$s saniye önce</string>
+    <string name="minutes_ago">%1$s dakika önce</string>
+    <string name="hours_ago">%1$s saat önce</string>
+    <string name="days_ago">%1$s gün önce</string>
+    <string name="months_ago">%1$s ay önce</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="detoxes">Detokslar</string>
+    <string name="favorites">Favorilerim</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="share">Paylaş</string>
+</resources>

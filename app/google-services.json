@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "473841301179",
+    "firebase_url": "https://detoksdiyetleri.firebaseio.com",
+    "project_id": "detoksdiyetleri",
+    "storage_bucket": "detoksdiyetleri.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473841301179:android:bbc106f0768b0cff",
+        "android_client_info": {
+          "package_name": "com.detoksdiyetleri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "473841301179-es10t1oscahi3dlp8p7u299acmqpgr8e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoZSeROV6htiLmHEsENo9w5hWbLlye-fY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
