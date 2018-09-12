@@ -1,4 +1,4 @@
-# DetoksDiyetleri
+# AndroidArchitectureComponentsMvvm
 Android-Mvvm-Example
 
 
